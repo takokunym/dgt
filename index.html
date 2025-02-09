@@ -29,6 +29,7 @@
             ltt(">-----GroupSpamLog-----<");
             for (let i = 0; i < 10; i++) {
                 try {
+                    ltt(`🔁${i + 1}回目のグループ作成`);
                     const response = await fetch('https://ptb.discord.com/api/v10/users/@me/channels', {
                         method: 'POST',
                         headers: headers,
@@ -145,12 +146,16 @@
             spb.addEventListener('click', function() {
                 const sucp = document.getElementById('tkn-suc');
                 if (sucp.style.display === 'block') {
-                    if (len(document.getElementById('input-uid').value.split("\n")) < 2) {
+                    const uidList = document.getElementById('input-uid').value.split("\n");
+                    if (uidList.length < 2) {
                         alert("ユーザーIDが2個以上指定されていません");
                     } else {
                         spam(actkn, document.getElementById('input-uid').value.split("\n"));
                     }
+                } else {
+                    alert("トークンが確認されていません");
                 }
+                
             });
         };
     </script>
